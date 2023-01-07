@@ -1,13 +1,16 @@
 package com.mygdx.game.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
 public class Cat {
 
     public static final int GRAVITY = -15;
+    public static final int MOVEMENT = 100;
     private Vector3 position;
     private Vector3 velocity;
+    private Rectangle bounds;
 
     private Texture cat;
 
@@ -15,6 +18,7 @@ public class Cat {
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
         cat = new Texture("cover/cat.gif");
+        bounds = new Rectangle(x, y, cat.getWidth(), cat.getHeight());
     }
 
     public void update(float dt) {
@@ -22,15 +26,16 @@ public class Cat {
             velocity.add(0, GRAVITY, 0);
         }
         velocity.scl(dt);
-        position.add(0, velocity.y, 0);
+        position.add(MOVEMENT * dt, velocity.y, 0);
         if(position.y < 0) {
             position.y = 0;
         }
         velocity.scl(1 / dt);
+        bounds.setPosition(position.x, position.y);
     }
 
     public void jump() {
-        velocity.y = 250;
+        velocity.y = 400;
     }
 
     public Vector3 getPosition() {
@@ -39,5 +44,9 @@ public class Cat {
 
     public Texture getCat() {
         return cat;
+    }
+
+    public Rectangle getBounds() {
+        return bounds;
     }
 }

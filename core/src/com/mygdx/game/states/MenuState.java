@@ -32,6 +32,7 @@ public class MenuState extends State{
 
     @Override
     public void render(SpriteBatch sb) {
+        Gdx.gl.glClearColor(0, 0, 0, 0);
         sb.begin();
         sb.draw(background, 0,0, MyGdxGame.WIDTH, MyGdxGame.HEIGHT);
         sb.draw(playBtn, (MyGdxGame.WIDTH / 2) - (playBtn.getWidth() / 2), MyGdxGame.HEIGHT / 2);
