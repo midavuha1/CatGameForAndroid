@@ -41,4 +41,8 @@ public class House {
     public boolean collides (Rectangle player) {
         return player.overlaps(boundsHouse);
     }
+
+    public void dispose() {
+        house.dispose();
+    }
 }
