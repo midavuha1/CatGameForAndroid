@@ -17,7 +17,7 @@ public class Cat {
     public Cat(int x, int y) {
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
-        cat = new Texture("cover/cat.gif");
+        cat = new Texture("cover/cat.png");
         bounds = new Rectangle(x, y, cat.getWidth(), cat.getHeight());
     }
 
@@ -35,7 +35,7 @@ public class Cat {
     }
 
     public void jump() {
-        velocity.y = 400;
+        velocity.y = 200;
     }
 
     public Vector3 getPosition() {
